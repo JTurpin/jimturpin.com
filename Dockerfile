@@ -1,4 +1,4 @@
-FROM nginx:alpine as build
+FROM alpine as build
 LABEL Maintainer="jim@jimturpin.com"
 
 RUN apk add --update \
