@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# clean up any old versions of the site first
+rm -rf public/*
+
 # Generate the html
 hugo --minify --cleanDestinationDir
 
