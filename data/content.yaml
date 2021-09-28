@@ -20,7 +20,7 @@ Experience:
         Date: Oct 2018 - Present
         Details:
           - Led security and market viability assessments of M&A targets.
-          - Helped lead post-acquisition integration of six companies, growing Engineering team from 25 to 150.
+          - Helped lead post-acquisition integration of six companies, growing Engineering team from 25 to 200.
           - Restructured with sustained focus on building culture of employee empowerment across global teams, tracking ongoing success metrics in anonymous staff surveys.
           - Created cohesive security practice across six legacy companies.
           - Completed and unified all products under a clean SOC2 report.
@@ -91,16 +91,26 @@ Education:
 Skills:
   - Family: Management
     Items:
-      - Planning, Agile, Project Management, Hiring, Mentoring
+      - Planning
+      - Agile
+      - Project Management
+      - Hiring
+      - Mentoring
   - Family: Security
     Items:
-      - SOC2
+      - Network Security
+      - Frameworks (NIST)
+      - Awareness programs
   - Family: Infrastructure
     Items:
       - Cloud Infrastructure (AWS, GCP, Azure)
-      - Docker, Kubernetes
+      - Docker
+      - Kubernetes
       - Log Aggregation (syslog, logstash, graylog, ELK)
-      - VMware, XenServer, Active Directory, Load Balancing
+      - VMware
+      - XenServer
+      - Active Directory
+      - Load Balancing
   - Family: CI/CD
     Items:
       - Terraform
@@ -108,9 +118,14 @@ Skills:
       - Puppet
       - Jenkins
       - github
-
+  - Family: Compliance
+    Items:
+      - SOC2
+      - HIPAA
+      - GDPR
+      - CCPA
 Interests:
   - Flying
-  - Long Course Triathlon
+  - Triathlon
   - Travel
 
