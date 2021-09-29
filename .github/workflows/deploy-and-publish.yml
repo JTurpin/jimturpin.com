@@ -5,39 +5,27 @@ on:
     branches: [ master ]
   pull_request:
 
-defaults:
-  # define job to build and publish docker image
-  build-and-push-docker-image:
-    name: Build Docker image and push to repositories
-    # run only when code is compiling and tests are passing
+jobs:
+  build-images:
     runs-on: ubuntu-latest
-
-    # steps to perform in job
+    env: 
+      BUILD_CONFIGURATION : debug
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      # setup Docker buld action
+      - uses: actions/checkout@v1
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
-        id: buildx
         uses: docker/setup-buildx-action@v1
-
       - name: Login to DockerHub
-        uses: docker/login-action@v1
+        uses: docker/login-action@v1 
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: Build image and push to Docker Hub
+      - name: Build and push
+        id: docker_build
         uses: docker/build-push-action@v2
         with:
-          # relative path to the place where source code with Dockerfile is located
-          context: ./
-          # Note: tags has to be all lower-case
-          tags: |
-            jturpin/jimturpin.com:latest 
-          # build on feature branches, push only on main branch
-          push: ${{ github.ref == 'refs/heads/main' }}
-
-      - name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64,linux/386
+          push: true
+          tags: jturpin/jimturpin.com:latest
