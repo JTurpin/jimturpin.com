@@ -13,11 +13,23 @@ BasicInfo:
 Profile: Forward-thinking engineering leader with prolific experience growing teams, building first-to-market products, and cementing operational efficiency as a bedrock of successful software organizations. Robust technical skillset balanced by deep knowledge of Scrum and Agile processes and empathetic, people-first decision-making.
 
 Experience:
+  - Employer: Allumia
+    Place: Seattle, WA (Remote)
+    Positions:
+      - Title: Chief Technology Officer
+        Date: Jan 2022 - Present
+        Details:
+          - Develop technical aspects of Allumia’s strategy to ensure alignment with its business goals
+          - Discover and implement new technologies that yield competitive advantage
+          - Monitor KPIs and IT budgets to assess technological performance
+          - Use stakeholders’ feedback to inform necessary improvements and adjustments to technology
+          - Communicate technology strategy to partners and investors
+        Badges: ['Planning', 'Mentoring', 'Cybersecurity', 'SOC2']
   - Employer: Uplight
     Place: Boulder, CO
     Positions:
       - Title: VP, Engineering
-        Date: Oct 2018 - Present
+        Date: Oct 2018 - Dec 2021
         Details:
           - Led security and market viability assessments of M&A targets.
           - Helped lead post-acquisition integration of six companies, growing Engineering team from 25 to 200.
@@ -108,7 +120,6 @@ Skills:
       - Kubernetes
       - Log Aggregation (syslog, logstash, graylog, ELK)
       - VMware
-      - XenServer
       - Active Directory
       - Load Balancing
   - Family: CI/CD
