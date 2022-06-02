@@ -9,10 +9,8 @@ rm -rf public/*
 # Generate the html
 hugo --minify --cleanDestinationDir
 
-# create the docker container
+# create and push the docker container
 docker build -t jturpin/jimturpin.com:$timestamp .
 docker build -t jturpin/jimturpin.com:latest . 
-
-# push the container to dockerhub
-docker push jturpin/jimturpin.com:$timestamp
-docker push jturpin/jimturpin.com:latest
+docker buildx build --platform linux/amd64,linux/arm64 --push -t jturpin/jimturpin.com:$timestamp .
+docker buildx build --platform linux/amd64,linux/arm64 --push -t jturpin/jimturpin.com:latest .
