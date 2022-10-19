@@ -6,6 +6,10 @@ timestamp=`date "+%d-%m-%y--%H.%M.%S"`
 # clean up any old versions of the site first
 rm -rf public/*
 
+# pull latest versions of docker containers
+docker pull klakegg/hugo:ext-alpine
+docker pull nginx:alpine
+
 # Generate the html
 hugo --minify --cleanDestinationDir
 
