@@ -21,15 +21,15 @@ Experience:
         Details:
           - Develop technical aspects of Allumia’s strategy to ensure alignment with its business goals
           - Discover and implement new technologies that yield competitive advantage
-          - Monitor KPIs and IT budgets to assess technological performance
+          - Monitor KPIs and Engineering budgets to assess technological performance
           - Use stakeholders’ feedback to inform necessary improvements and adjustments to technology
           - Communicate technology strategy to partners and investors
-        Badges: ['Planning', 'Mentoring', 'Cybersecurity', 'SOC2']
+        Badges: ['Planning', 'Mentoring', 'Product Development', 'Cybersecurity', 'SOC2', 'IoT']
   - Employer: Uplight
     Place: Boulder, CO
     Positions:
       - Title: VP, Engineering
-        Date: Oct 2018 - Dec 2021
+        Date: 2018 - 2022
         Details:
           - Led security and market viability assessments of M&A targets.
           - Helped lead post-acquisition integration of six companies, growing Engineering team from 25 to 200.
@@ -105,6 +105,7 @@ Skills:
     Items:
       - Planning
       - Agile
+      - Product Development
       - Project Management
       - Hiring
       - Mentoring
@@ -118,10 +119,6 @@ Skills:
       - Cloud Infrastructure (AWS, GCP, Azure)
       - Docker
       - Kubernetes
-      - Log Aggregation (syslog, logstash, graylog, ELK)
-      - VMware
-      - Active Directory
-      - Load Balancing
   - Family: CI/CD
     Items:
       - Terraform
