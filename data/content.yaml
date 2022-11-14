@@ -24,6 +24,8 @@ Experience:
           - Monitor KPIs and Engineering budgets to assess technological performance
           - Use stakeholders’ feedback to inform necessary improvements and adjustments to technology
           - Communicate technology strategy to partners and investors
+          - Develop next gen metering solutions
+          -
         Badges: ['Planning', 'Mentoring', 'Product Development', 'Cybersecurity', 'SOC2', 'IoT']
   - Employer: Uplight
     Place: Boulder, CO
@@ -32,13 +34,13 @@ Experience:
         Date: 2018 - 2022
         Details:
           - Led security and market viability assessments of M&A targets.
-          - Helped lead post-acquisition integration of six companies, growing Engineering team from 25 to 200.
+          - Helped lead post-acquisition integration of six companies, growing Engineering team from 25 to 300.
           - Restructured with sustained focus on building culture of employee empowerment across global teams, tracking ongoing success metrics in anonymous staff surveys.
           - Created cohesive security practice across six legacy companies.
           - Completed and unified all products under a clean SOC2 report.
           - Recruited, built and managed an engineering security team that has demonstrably improved the security of Uplight products.
           - Built Scrum leadership team and refined SDLC and quarterly planning.
-          - Managed engineering budget, reliably leading projects to on- time/under-budget completion.
+          - Managed engineering budget, reliably leading projects to on-time/under-budget completion.
           - Modernized hiring process, using candidate feedback—successful and unsuccessful—to realize better company and applicant experience.
         Badges: ['Agile', 'SOC2', 'Cybersecurity', 'AWS', 'GCP', 'Kubernetes', 'Planning', 'Mentoring']
   - Employer: LogRhythm  
@@ -47,7 +49,8 @@ Experience:
       - Title: Senior Manager, Software Development
         Date: 2017 - 2018
         Details:
-          - Drove effort to deploy flagship on-prem SIEM offering to the cloud.  Hired engineering team to build SaaS product infrastructure.
+          - Drove effort to deploy flagship on-prem SIEM offering to the cloud. 
+          - Hired engineering team to build SaaS product infrastructure.
           - Spec’d SaaS offering with Google Cloud Platform.
           - Managed successful SOC 2 type II certification of AWS SaaS.
           - Organized Agile training for R&D (200 engineers) to make deliverables predictable, improve velocity, and generate metrics on release health.
