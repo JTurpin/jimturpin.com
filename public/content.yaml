@@ -1,0 +1,144 @@
+BasicInfo:
+  FirstName: Jim
+  LastName: Turpin
+  Photo: img/avatar.jpg
+  Contacts:
+    - Icon: fas fa-envelope
+      Info: jim@jimturpin.com
+    - Icon: fas fa-globe
+      Info: jimturpin.com
+    - Icon: fas fa-map-marker-alt
+      Info: Colorado, USA
+
+Profile: Forward-thinking engineering leader with prolific experience growing teams, building first-to-market products, and cementing operational efficiency as a bedrock of successful software organizations. Robust technical skillset balanced by deep knowledge of Scrum and Agile processes and empathetic, people-first decision-making.
+
+Experience:
+  - Employer: Allumia
+    Place: Seattle, WA (Remote)
+    Positions:
+      - Title: Chief Technology Officer
+        Date: Jan 2022 - Present
+        Details:
+          - Develop and implement a company-wide technology strategy that aligned with business goals and objectives, resulting in an increase in efficiency and a 15% reduction in IT costs
+          - Oversee the selection, deployment, and management of all technology systems, including hardware, software, and networks
+          - Lead a team of engineers in the development and deployment of a scalable, secure, and reliable system for collecting and analyzing data from a large network of smart energy devices
+          - Led the development and execution of the company's cybersecurity plan, ensuring the protection of sensitive data and systems
+          - Manage a team of technical staff, including hiring, training, and performance evaluations 
+          - Collaborate with cross-functional teams, including product support, marketing, and sales, to identify and prioritize technology initiatives
+          - Participate in budget planning and resource allocation for technology projects and initiatives
+          - Research industry trends and emerging technologies, continuously looking for opportunities to introduce new tools and techniques that could benefit the company
+          - Work with external vendors and partners to negotiate contracts and manage relationships.
+        Badges: ['Planning', 'Mentoring', 'Product Development', 'Cybersecurity', 'SOC2', 'IoT']
+  - Employer: Uplight
+    Place: Boulder, CO
+    Positions:
+      - Title: VP, Engineering
+        Date: 2018 - 2022
+        Details:
+          - Led security and market viability assessments of M&A targets.
+          - Helped lead post-acquisition integration of six companies, growing Engineering team from 25 to 300.
+          - Restructured with sustained focus on building culture of employee empowerment across global teams, tracking ongoing success metrics in anonymous staff surveys.
+          - Created cohesive security practice across six legacy companies.
+          - Completed and unified all products under a clean SOC2 report.
+          - Recruited, built and managed an engineering security team that has demonstrably improved the security of Uplight products.
+          - Built Scrum leadership team and refined SDLC and quarterly planning.
+          - Managed engineering budget, reliably leading projects to on-time/under-budget completion.
+          - Modernized hiring process, using candidate feedback—successful and unsuccessful—to realize better company and applicant experience.
+        Badges: ['Agile', 'SOC2', 'Cybersecurity', 'AWS', 'GCP', 'Kubernetes', 'Planning', 'Mentoring']
+  - Employer: LogRhythm  
+    Place: Boulder, CO
+    Positions:   
+      - Title: Senior Manager, Software Development
+        Date: 2017 - 2018
+        Details:
+          - Drove effort to deploy flagship on-prem SIEM offering to the cloud. 
+          - Hired engineering team to build SaaS product infrastructure.
+          - Spec’d SaaS offering with Google Cloud Platform.
+          - Managed successful SOC 2 type II certification of AWS SaaS.
+          - Organized Agile training for R&D (200 engineers) to make deliverables predictable, improve velocity, and generate metrics on release health.
+          - Managed software and vendor budget for R&D department.
+          - Oversaw rewrite of CI infrastructure to use Kubernetes/Jenkins, moving process to agnostic environment (on-prem or cloud) and mitigating human process errors.
+        Badges: ['Agile', 'SOC2', 'AWS', 'GCP', 'Planning', 'Planning', 'Cybersecurity']
+  - Employer: OpenWager
+    Place: Boulder, CO
+    Positions:
+      - Title: Director, Engineering
+        Date: 2015 - 2017
+        Details:
+          - Managed three teams (22 engineers) in multiple countries. Recruited and hired all members of Boulder engineering team.
+          - Served as Scrum Master for backend and mobile client teams.
+          - Analyzed infrastructure costs and made changes (right-sized servers, implemented auto-scaling) to save $35k/month.
+          - Led full config. management infrastructure rewrite from Salt to Ansible, decreasing client backend deploy time from three months to an hour.
+          - Designed and executed complete migration of aging on-prem infrastructure to private cloud (AWS) with zero downtime.
+          - Seamlessly migrated game acquisition with 100k daily active users to OpenWager systems.
+        Badges: ['AWS', 'Ansible', 'High Availability', 'Hiring', 'Team Building']
+  - Employer: Simple Energy
+    Place: Boulder, CO
+    Positions:
+      - Title: Director, Engineering
+        Date: 2013 - 2015
+        Details:
+          - Drove adoption of Scrum across Engineering and Product teams. Served as Scrum Master for infrastructure team.
+          - Managed team of six operations engineers. Conducted interviews and assisted in hiring, helping firm grow from five to 30 engineers.
+          - Improved client setup time from nine months to less than four hours by automating most customer launch steps, ensuring fast and consistent results for customer onboards.
+          - Scaled infrastructure from 20 servers to more than 700, addressing critical need for dev environments that could spin up/tear down easily.
+          - Redesigned network and upgraded to custom hardware, increasing performance 20x.
+          - Redefined deployment process using infrastructure-as-code and custom scripts to ensure quick and simple deployments.
+          - Built and managed monitoring and notification systems using Zabbix + PagerDuty.
+        Badges: ['Agile', 'Puppet', 'Xenserver', 'Hiring ', 'Infrastructure Design']
+  - Employer: Applied Trust
+    Place: Boulder, CO
+    Positions:
+      - Title: Senior Engineer
+        Date: 2007 - 2013
+        Details:
+          - Served as client manager on high-touch consulting accounts across healthcare, government, tech, finance, and other industries—assessing client needs, setting and adhering to budgets, and leading all projects.
+          - Reviewed client infrastructure, advised effective best practices, and created short-term and long-term companywide infrastructure plans.
+          - Designed, configured, monitored, troubleshot, and maintained complex server environments.
+          - Performed security, performance, and availability assessments against HIPAA, PCI, SCADA, and other regulations/frameworks.
+          - Evaluated and implemented new technologies, including large-scale log management and petabyte storage solutions.
+        Badges: ['Consulting', 'Security', 'Infrastructure', 'Hiring']
+
+Education:
+  - Course: Bachelor of Science - Business
+    Place: University of Northern Colorado
+    Date: 2000 - 2004
+    Details: Specialised in Computer Information Systems
+
+Skills:
+  - Family: Management
+    Items:
+      - Planning
+      - Agile
+      - Product Development
+      - Project Management
+      - Hiring
+      - Mentoring
+  - Family: Security
+    Items:
+      - Network Security
+      - Frameworks (NIST)
+      - Awareness programs
+  - Family: Infrastructure
+    Items:
+      - Cloud Infrastructure (AWS, GCP, Azure)
+      - Docker
+      - Kubernetes
+  - Family: CI/CD
+    Items:
+      - Terraform
+      - Ansible
+      - Puppet
+      - Jenkins
+      - github
+  - Family: Compliance
+    Items:
+      - SOC2
+      - HIPAA
+      - GDPR
+      - CCPA
+Interests:
+  - Flying
+  - Triathlon
+  - Travel
+
