@@ -10,7 +10,7 @@ BasicInfo:
     - Icon: fas fa-map-marker-alt
       Info: Colorado, USA
 
-Profile: Forward-thinking engineering leader with prolific experience growing teams, building first-to-market products, and cementing operational efficiency as a bedrock of successful software organizations. Robust technical skillset balanced by deep knowledge of Scrum and Agile processes and empathetic, people-first decision-making.
+Profile: Accomplished and strategic CTO with over 20 years of experience in leading high-performing engineering teams and driving technological innovation. Proven expertise in managing and navigating mergers and acquisitions from both sides of the process, with a track record of successful post-acquisition integrations. Skilled in Agile and Scrum methodologies, cybersecurity, and cloud technologies. Demonstrated ability to manage large-scale projects, negotiate with vendors, and collaborate effectively with cross-functional teams. Committed to fostering a culture of employee empowerment and continuous improvement. Seeking a challenging role to leverage technical expertise and leadership skills to drive business growth and operational excellence.
 
 Experience:
   - Employer: Allumia
@@ -19,16 +19,16 @@ Experience:
       - Title: Chief Technology Officer
         Date: Jan 2022 - Present
         Details:
-          - Develop and implement a company-wide technology strategy that aligned with business goals and objectives, resulting in an increase in efficiency and a 15% reduction in IT costs
-          - Oversee the selection, deployment, and management of all technology systems, including hardware, software, and networks
-          - Lead a team of engineers in the development and deployment of a scalable, secure, and reliable system for collecting and analyzing data from a large network of smart energy devices
-          - Led the development and execution of the company's cybersecurity plan, ensuring the protection of sensitive data and systems
-          - Manage a team of technical staff, including hiring, training, and performance evaluations 
-          - Collaborate with cross-functional teams, including product support, marketing, and sales, to identify and prioritize technology initiatives
-          - Participate in budget planning and resource allocation for technology projects and initiatives
-          - Research industry trends and emerging technologies, continuously looking for opportunities to introduce new tools and techniques that could benefit the company
+          - Develop and implement a company-wide technology strategy that aligned with business goals and objectives, resulting in an increase in efficiency and a 15% reduction in IT costs.
+          - Oversee the selection, deployment, and management of all technology systems, including hardware, software, and networks.
+          - Lead a team of engineers in the development and deployment of a scalable, secure, and reliable system for collecting and analyzing data from a large network of smart energy devices.
+          - Led the development and execution of the company's cybersecurity plan, ensuring the protection of sensitive data and systems.
+          - Manage a team of technical staff, including hiring, training, and performance evaluations.
+          - Collaborate with cross-functional teams, including product support, marketing, and sales, to identify and prioritize technology initiatives.
+          - Participate in budget planning and resource allocation for technology projects and initiatives.
+          - Research industry trends and emerging technologies, continuously looking for opportunities to introduce new tools and techniques that could benefit the company.
           - Work with external vendors and partners to negotiate contracts and manage relationships.
-        Badges: ['Planning', 'Mentoring', 'Product Development', 'Cybersecurity', 'SOC2', 'IoT']
+        Badges: ['Planning', 'Mentoring', 'Product Development', 'Business Development', 'Cybersecurity', 'SOC2', 'IoT']
   - Employer: Uplight
     Place: Boulder, CO
     Positions:
@@ -39,7 +39,7 @@ Experience:
           - Helped lead post-acquisition integration of six companies, growing Engineering team from 25 to 300.
           - Restructured with sustained focus on building culture of employee empowerment across global teams, tracking ongoing success metrics in anonymous staff surveys.
           - Created cohesive security practice across six legacy companies.
-          - Completed and unified all products under a clean SOC2 report.
+          - Successfully unified all products under a single SOC2 report.
           - Recruited, built and managed an engineering security team that has demonstrably improved the security of Uplight products.
           - Built Scrum leadership team and refined SDLC and quarterly planning.
           - Managed engineering budget, reliably leading projects to on-time/under-budget completion.
@@ -53,8 +53,8 @@ Experience:
         Details:
           - Drove effort to deploy flagship on-prem SIEM offering to the cloud. 
           - Hired engineering team to build SaaS product infrastructure.
-          - Spec’d SaaS offering with Google Cloud Platform.
-          - Managed successful SOC 2 type II certification of AWS SaaS.
+          - Designed a SaaS offering using the Google Cloud Platform.
+          - Successfully achieved SOC 2 type II certification for our SaaS product.
           - Organized Agile training for R&D (200 engineers) to make deliverables predictable, improve velocity, and generate metrics on release health.
           - Managed software and vendor budget for R&D department.
           - Oversaw rewrite of CI infrastructure to use Kubernetes/Jenkins, moving process to agnostic environment (on-prem or cloud) and mitigating human process errors.
@@ -108,12 +108,12 @@ Education:
 Skills:
   - Family: Management
     Items:
-      - Planning
-      - Agile
+      - Business Development      
       - Product Development
-      - Project Management
       - Hiring
       - Mentoring
+      - Planning
+      - Agile
   - Family: Security
     Items:
       - Network Security
@@ -122,6 +122,7 @@ Skills:
   - Family: Infrastructure
     Items:
       - Cloud Infrastructure (AWS, GCP, Azure)
+      - IoT
       - Docker
       - Kubernetes
   - Family: CI/CD
