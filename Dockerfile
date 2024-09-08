@@ -6,7 +6,7 @@ WORKDIR /src
 RUN hugo
 
 #Copy static files to Nginx
-FROM nginx:alpine
+FROM nginx:1-alpine3.20
 COPY --from=build /src/public /usr/share/nginx/html
 EXPOSE 80
 WORKDIR /usr/share/nginx/html
