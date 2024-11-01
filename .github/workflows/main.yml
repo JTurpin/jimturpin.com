@@ -12,11 +12,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Get Pull Request Info
-      id: pr
-      uses: peter-evans/commit-message@v2
-      with:
-        token: ${{ secrets.REPO_TOKEN }}
+    - name: Get Pull Request Diff
+      id: diff
+      run: |
+        # Get the PR diff between the last commit and HEAD
+        git diff HEAD~1 HEAD > pr_diff.txt
 
     - name: Send Pull Request Content to Custom GPT
       env:
@@ -24,7 +24,7 @@ jobs:
       run: |
         pr_title="${{ github.event.pull_request.title }}"
         pr_body="${{ github.event.pull_request.body }}"
-        pr_diff=$(git diff HEAD~1 HEAD)
+        pr_diff=$(cat pr_diff.txt)
 
         curl -X POST "$GPT_API_URL" \
           -H "Authorization: Bearer ${{ secrets.CHATGPT }}" \
