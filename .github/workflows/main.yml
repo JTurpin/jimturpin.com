@@ -1,0 +1,36 @@
+name: Send PR to Custom GPT
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  analyze-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Get Pull Request Info
+      id: pr
+      uses: peter-evans/commit-message@v2
+      with:
+        token: ${{ secrets.REPO_TOKEN }}
+
+    - name: Send Pull Request Content to Custom GPT
+      env:
+        GPT_API_URL: "https://chatgpt.com/g/g-9m1JIKwVX-slash"
+      run: |
+        pr_title="${{ github.event.pull_request.title }}"
+        pr_body="${{ github.event.pull_request.body }}"
+        pr_diff=$(git diff HEAD~1 HEAD)
+
+        curl -X POST "$GPT_API_URL" \
+          -H "Authorization: Bearer ${{ secrets.CHATGPT }}" \
+          -H "Content-Type: application/json" \
+          -d '{
+                "title": "'"${pr_title}"'",
+                "body": "'"${pr_body}"'",
+                "diff": "'"${pr_diff}"'"
+              }'
