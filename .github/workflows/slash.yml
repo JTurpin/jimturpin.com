@@ -11,49 +11,48 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Get list of changed files
-      id: get_changed_files
-      run: |
-        files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
-        echo "$files" > changed_files.txt
+      - name: Get list of changed files
+        id: get_changed_files
+        run: |
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} > changed_files.txt
 
-    - name: Send files to Custom GPT
-      env:
-        GPT_ENDPOINT: https://chatgpt.com/g/g-9m1JIKwVX-slash
-        GITHUB_PR: ${{ github.event.pull_request.number }}
-      run: |
-        feedback=""
-        while IFS= read -r file; do
-          if [ -f "$file" ]; then
-            content=$(cat "$file")
-            response=$(curl -s -X POST "$GPT_ENDPOINT" \
-              -H "Content-Type: application/json" \
-              -d @- <<EOF
+      - name: Send files to Custom GPT
+        env:
+          GPT_ENDPOINT: https://chatgpt.com/g/g-9m1JIKwVX-slash
+          GITHUB_PR: ${{ github.event.pull_request.number }}
+        run: |
+          feedback=""
+          while IFS= read -r file; do
+            if [ -f "$file" ]; then
+              content=$(cat "$file")
+              response=$(curl -s -X POST "$GPT_ENDPOINT" \
+                -H "Content-Type: application/json" \
+                -d @- <<EOF
 {
   "file_name": "$file",
   "file_content": "$content",
   "pr_number": "$GITHUB_PR"
 }
 EOF
-            )
-            feedback="$feedback\n\nFile: $file\n$response"
-          fi
-        done < changed_files.txt
-        echo "$feedback" > feedback.txt
+              )
+              feedback="$feedback\n\nFile: $file\n$response"
+            fi
+          done < changed_files.txt
+          echo "$feedback" > feedback.txt
 
-    - name: Post feedback as comments
-      env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
-      run: |
-        feedback=$(cat feedback.txt)
-        while IFS= read -r line; do
-          if [ -n "$line" ]; then
-            curl -s -X POST "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments" \
-              -H "Authorization: Bearer $GH_TOKEN" \
-              -H "Content-Type: application/json" \
-              -d "{\"body\": \"$line\"}"
-          fi
-        done <<< "$feedback"
+      - name: Post feedback as comments
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          feedback=$(cat feedback.txt)
+          echo "$feedback" | while IFS= read -r line; do
+            if [ -n "$line" ]; then
+              curl -s -X POST "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments" \
+                -H "Authorization: Bearer $GH_TOKEN" \
+                -H "Content-Type: application/json" \
+                -d "{\"body\": \"$line\"}"
+            fi
+          done
