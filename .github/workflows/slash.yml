@@ -67,11 +67,16 @@ jobs:
         run: |
           if [ -s feedback.txt ]; then
             while IFS= read -r line; do
-              curl -s -X POST "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments" \
-                -H "Authorization: Bearer $GH_TOKEN" \
-                -H "Content-Type: application/json" \
-                -d "{\"body\": \"$line\"}"
-            done < <(cat feedback.txt)
+              # Skip empty lines
+              if [ -n "$line" ]; then
+                sanitized_line=$(echo "$line" | jq -R .)
+                echo "Posting feedback: $sanitized_line"
+                curl -s -X POST "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments" \
+                  -H "Authorization: Bearer $GH_TOKEN" \
+                  -H "Content-Type: application/json" \
+                  -d "{\"body\": $sanitized_line}"
+              fi
+            done < feedback.txt
           else
             echo "No feedback to post."
           fi
