@@ -19,11 +19,8 @@ jobs:
       run: |
         files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
         echo "$files" > changed_files.txt
-      outputs:
-        files: ${{ steps.get_changed_files.outputs.files }}
 
     - name: Send files to Custom GPT
-      id: send_to_gpt
       env:
         GPT_ENDPOINT: https://chatgpt.com/g/g-9m1JIKwVX-slash
         GITHUB_PR: ${{ github.event.pull_request.number }}
@@ -52,11 +49,11 @@ EOF
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
         feedback=$(cat feedback.txt)
-        echo "$feedback" | while IFS= read -r line; do
+        while IFS= read -r line; do
           if [ -n "$line" ]; then
             curl -s -X POST "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments" \
               -H "Authorization: Bearer $GH_TOKEN" \
               -H "Content-Type: application/json" \
               -d "{\"body\": \"$line\"}"
           fi
-        done
+        done <<< "$feedback"
