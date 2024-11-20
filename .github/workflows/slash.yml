@@ -1,0 +1,59 @@
+name: PR Feedback with Custom GPT
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  gpt-feedback:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Get list of changed files
+      id: get_changed_files
+      run: |
+        files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
+        echo "::set-output name=files::$files"
+
+    - name: Send files to Custom GPT
+      id: send_to_gpt
+      env:
+        GPT_ENDPOINT: https://chatgpt.com/g/g-9m1JIKwVX-slash
+        CHANGED_FILES: ${{ steps.get_changed_files.outputs.files }}
+        GITHUB_PR: ${{ github.event.pull_request.number }}
+      run: |
+        feedback=""
+        for file in $CHANGED_FILES; do
+          content=$(cat "$file")
+          response=$(curl -s -X POST "$GPT_ENDPOINT" \
+            -H "Content-Type: application/json" \
+            -d @- <<EOF
+{
+  "file_name": "$file",
+  "file_content": "$content",
+  "pr_number": "$GITHUB_PR"
+}
+EOF
+)
+          feedback="$feedback\n\nFile: $file\n$response"
+        done
+        echo "$feedback" > feedback.txt
+
+    - name: Post feedback as comments
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: |
+        feedback=$(cat feedback.txt)
+        echo "$feedback" | while IFS= read -r line; do
+          if [ -n "$line" ]; then
+            curl -s -X POST "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments" \
+              -H "Authorization: Bearer $GH_TOKEN" \
+              -H "Content-Type: application/json" \
+              -d "{\"body\": \"$line\"}"
+          fi
+        done
