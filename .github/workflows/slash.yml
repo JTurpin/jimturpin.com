@@ -71,10 +71,17 @@ jobs:
               if [ -n "$line" ]; then
                 sanitized_line=$(echo "$line" | jq -R .)
                 echo "Posting feedback: $sanitized_line"
-                curl -s -X POST "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments" \
+                response=$(curl -s --fail -X POST "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments" \
                   -H "Authorization: Bearer $GH_TOKEN" \
                   -H "Content-Type: application/json" \
-                  -d "{\"body\": $sanitized_line}"
+                  -d "{\"body\": $sanitized_line}")
+                if [ $? -ne 0 ]; then
+                  echo "Failed to post comment. Response:"
+                  echo "$response"
+                  exit 1
+                else
+                  echo "Comment posted successfully."
+                fi
               fi
             done < feedback.txt
           else
