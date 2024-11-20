@@ -1,89 +1,47 @@
-name: PR Feedback with Custom GPT
+name: Custom GPT Code Review
 
 on:
   pull_request:
-    types:
-      - opened
-      - synchronize
+    types: [opened, synchronize, reopened]
 
 jobs:
-  gpt-feedback:
+  gpt-review:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      # Step 1: Checkout the code
+      - name: Checkout Code
         uses: actions/checkout@v3
+
+      # Step 2: Call Custom GPT
+      - name: Call Custom GPT
+        id: call-gpt
+        env:
+          CHATGPT_ACCESS_TOKEN: ${{ secrets.CHATGPT_ACCESS_TOKEN }}
+        run: |
+          echo "Calling Custom GPT..."
+          curl -X POST \
+            -H "Authorization: Bearer $CHATGPT_ACCESS_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d '{
+                  "prompt": "Provide a detailed code review for the changes in this pull request.",
+                  "max_tokens": 500
+                }' \
+            https://api.openai.com/v1/completions \
+            -o gpt-response.json
+          echo "GPT response saved to gpt-response.json"
+
+      # Step 3: Post GPT Response as a Pull Request Comment
+      - name: Post GPT Response to PR
+        uses: actions/github-script@v6
         with:
-          fetch-depth: 0 # Ensure full history is fetched for proper diffing
+          script: |
+            const fs = require('fs');
+            const gptOutput = JSON.parse(fs.readFileSync('gpt-response.json', 'utf8'));
 
-      - name: Get list of changed files
-        id: get_changed_files
-        run: |
-          # Check if the 'before' commit is valid
-          if git cat-file -e ${{ github.event.before }} 2>/dev/null; then
-            echo "Comparing against commit ${{ github.event.before }}."
-            git diff --name-only --diff-filter=AMRC ${{ github.event.before }} ${{ github.sha }} > changed_files.txt
-          else
-            echo "Invalid 'before' commit. Comparing against initial commit of the branch."
-            git diff --name-only --diff-filter=AMRC $(git rev-list --max-parents=0 HEAD) HEAD > changed_files.txt
-          fi
-          echo "Changed files:"
-          cat changed_files.txt
-
-      - name: Handle renamed files
-        id: renamed_files
-        run: |
-          # Ensure renamed files are properly handled
-          if git diff --name-status ${{ github.event.before }} ${{ github.sha }} | grep '^R'; then
-            echo "Renamed files detected."
-            git diff --name-status ${{ github.event.before }} ${{ github.sha }} | grep '^R' | awk '{print $3}' >> changed_files.txt
-          fi
-          echo "Final list of files:"
-          cat changed_files.txt
-
-      - name: Send files to Custom GPT
-        env:
-          GPT_ENDPOINT: https://chatgpt.com/g/g-9m1JIKwVX-slash
-          GITHUB_PR: ${{ github.event.pull_request.number }}
-        run: |
-          feedback=""
-          while IFS= read -r file; do
-            if [ -f "$file" ]; then
-              content=$(cat "$file")
-              response=$(curl -s -X POST "$GPT_ENDPOINT" \
-                -H "Content-Type: application/json" \
-                -d "$(jq -n --arg file_name "$file" --arg file_content "$content" --arg pr_number "$GITHUB_PR" '{file_name: $file_name, file_content: $file_content, pr_number: $pr_number}')" \
-              )
-              feedback="$feedback\n\nFile: $file\n$response"
-            else
-              echo "File $file no longer exists. Skipping."
-            fi
-          done < changed_files.txt
-          echo "$feedback" > feedback.txt
-
-      - name: Post feedback as comments
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: |
-          if [ -s feedback.txt ]; then
-            while IFS= read -r line; do
-              # Skip empty lines
-              if [ -n "$line" ]; then
-                sanitized_line=$(echo "$line" | jq -R .)
-                echo "Posting feedback: $sanitized_line"
-                response=$(curl -s --fail -X POST "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments" \
-                  -H "Authorization: Bearer $GH_TOKEN" \
-                  -H "Content-Type: application/json" \
-                  -d "{\"body\": $sanitized_line}")
-                if [ $? -ne 0 ]; then
-                  echo "Failed to post comment. Response:"
-                  echo "$response"
-                  exit 1
-                else
-                  echo "Comment posted successfully."
-                fi
-              fi
-            done < feedback.txt
-          else
-            echo "No feedback to post."
-          fi
+            github.rest.issues.createComment({
+              issue_number: context.payload.pull_request.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `### Custom GPT Code Review:\n\n${gptOutput.choices[0].text}`
+            });
