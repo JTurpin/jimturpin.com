@@ -14,7 +14,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # Ensure the full history is fetched for proper diffing
+          fetch-depth: 0 # Ensure full history is fetched for proper diffing
 
       - name: Get list of changed files
         id: get_changed_files
@@ -26,6 +26,9 @@ jobs:
           else
             echo "Invalid 'before' commit. Comparing against initial commit of the branch."
             git diff --name-only --diff-filter=AMRC $(git rev-list --max-parents=0 HEAD) HEAD > changed_files.txt
+          fi
+          echo "Changed files:"
+          cat changed_files.txt
 
       - name: Handle renamed files
         id: renamed_files
