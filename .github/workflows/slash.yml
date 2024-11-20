@@ -22,10 +22,21 @@ jobs:
           # Check if the 'before' commit is valid
           if git cat-file -e ${{ github.event.before }} 2>/dev/null; then
             echo "Comparing against commit ${{ github.event.before }}."
-            git diff --name-only ${{ github.event.before }} ${{ github.sha }} > changed_files.txt
+            git diff --name-only --diff-filter=AMRC ${{ github.event.before }} ${{ github.sha }} > changed_files.txt
           else
             echo "Invalid 'before' commit. Comparing against initial commit of the branch."
-            git diff --name-only $(git rev-list --max-parents=0 HEAD) HEAD > changed_files.txt
+            git diff --name-only --diff-filter=AMRC $(git rev-list --max-parents=0 HEAD) HEAD > changed_files.txt
+
+      - name: Handle renamed files
+        id: renamed_files
+        run: |
+          # Ensure renamed files are properly handled
+          if git diff --name-status ${{ github.event.before }} ${{ github.sha }} | grep '^R'; then
+            echo "Renamed files detected."
+            git diff --name-status ${{ github.event.before }} ${{ github.sha }} | grep '^R' | awk '{print $3}' >> changed_files.txt
+          fi
+          echo "Final list of files:"
+          cat changed_files.txt
 
       - name: Send files to Custom GPT
         env:
@@ -41,6 +52,8 @@ jobs:
                 -d "$(jq -n --arg file_name "$file" --arg file_content "$content" --arg pr_number "$GITHUB_PR" '{file_name: $file_name, file_content: $file_content, pr_number: $pr_number}')" \
               )
               feedback="$feedback\n\nFile: $file\n$response"
+            else
+              echo "File $file no longer exists. Skipping."
             fi
           done < changed_files.txt
           echo "$feedback" > feedback.txt
