@@ -13,17 +13,19 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Ensure the full history is fetched for proper diffing
 
       - name: Get list of changed files
         id: get_changed_files
         run: |
-          if [ "${{ github.event.before }}" = "0000000000000000000000000000000000000000" ]; then
-            echo "New branch detected. Comparing against initial commit."
-            git diff --name-only $(git rev-list --max-parents=0 HEAD) HEAD > changed_files.txt
-          else
+          # Check if the 'before' commit is valid
+          if git cat-file -e ${{ github.event.before }} 2>/dev/null; then
             echo "Comparing against commit ${{ github.event.before }}."
             git diff --name-only ${{ github.event.before }} ${{ github.sha }} > changed_files.txt
-          fi
+          else
+            echo "Invalid 'before' commit. Comparing against initial commit of the branch."
+            git diff --name-only $(git rev-list --max-parents=0 HEAD) HEAD > changed_files.txt
 
       - name: Send files to Custom GPT
         env:
