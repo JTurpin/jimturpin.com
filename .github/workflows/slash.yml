@@ -18,35 +18,38 @@ jobs:
       id: get_changed_files
       run: |
         files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
-        echo "::set-output name=files::$files"
+        echo "$files" > changed_files.txt
+      outputs:
+        files: ${{ steps.get_changed_files.outputs.files }}
 
     - name: Send files to Custom GPT
       id: send_to_gpt
       env:
         GPT_ENDPOINT: https://chatgpt.com/g/g-9m1JIKwVX-slash
-        CHANGED_FILES: ${{ steps.get_changed_files.outputs.files }}
         GITHUB_PR: ${{ github.event.pull_request.number }}
       run: |
         feedback=""
-        for file in $CHANGED_FILES; do
-          content=$(cat "$file")
-          response=$(curl -s -X POST "$GPT_ENDPOINT" \
-            -H "Content-Type: application/json" \
-            -d @- <<EOF
+        while IFS= read -r file; do
+          if [ -f "$file" ]; then
+            content=$(cat "$file")
+            response=$(curl -s -X POST "$GPT_ENDPOINT" \
+              -H "Content-Type: application/json" \
+              -d @- <<EOF
 {
   "file_name": "$file",
   "file_content": "$content",
   "pr_number": "$GITHUB_PR"
 }
 EOF
-)
-          feedback="$feedback\n\nFile: $file\n$response"
-        done
+            )
+            feedback="$feedback\n\nFile: $file\n$response"
+          fi
+        done < changed_files.txt
         echo "$feedback" > feedback.txt
 
     - name: Post feedback as comments
       env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
         feedback=$(cat feedback.txt)
         echo "$feedback" | while IFS= read -r line; do
