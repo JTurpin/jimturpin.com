@@ -2,7 +2,7 @@ name: PR Code Standards Review
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   ai-code-review:
@@ -32,7 +32,7 @@ jobs:
         git diff ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} > pr_diff.txt
         echo "Generated PR diff"
 
-    - name: Review Code with OpenAI
+    - name: Review Code with ChatGPT
       env:
         OPENAI_API_KEY: ${{ secrets.CHATGPT }}
       run: |
@@ -49,7 +49,7 @@ jobs:
             pr_diff = diff_file.read()
 
         # Set up OpenAI client
-        openai.api_key = os.getenv('CHATGPT')
+        openai.api_key = os.getenv('OPENAI_API_KEY')
 
         # Prepare the prompt
         prompt = f"""
