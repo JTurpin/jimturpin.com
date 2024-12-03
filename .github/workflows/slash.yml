@@ -2,7 +2,7 @@ name: PR Code Standards Review
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [ '*' ]
 
 jobs:
   ai-code-review:
