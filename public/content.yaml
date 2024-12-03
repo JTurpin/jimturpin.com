@@ -13,51 +13,54 @@ BasicInfo:
 Profile: Forward-thinking engineering leader with prolific experience growing teams, building first-to-market products, and cementing operational efficiency as a bedrock of successful software organizations. Robust technical skillset balanced by deep knowledge of Scrum and Agile processes and empathetic, people-first decision-making.
 
 Experience:
+  - Employer: Sitetracker
+    Place: Montclair, NJ (Remote)
+    Positions:
+      - Title: VP, Engineering
+        Date: May 2024 - Current
+        Details:
+          - Lead the development and scaling of a large SaaS platform with over 300 customers, driving a 40% year-over-year revenue growth through innovative product development and operational excellence.
+          - Oversee a high-performing, geographically dispersed team, fostering collaboration, continuous improvement, and technical innovation across North American and Indian engineering team of 90.
+          - Implemented key technology strategies that optimized platform performance, enhanced customer experience, and supported significant client acquisition and retention.
+          - Streamlined engineering processes, driving productivity and scalability while ensuring high availability, security, and reliability for a growing customer base.
+          - Lead the technical due diligence for the acquisition of two companies and managed the integration of those companies into Sitetracker.
+        Badges: ['Strategic Leadership', 'Mentoring', 'Business Development', 'M&A', 'Cybersecurity']
+
   - Employer: Allumia
     Place: Seattle, WA (Remote)
     Positions:
       - Title: Chief Technology Officer
-        Date: Jan 2022 - Present
+        Date: Jan 2022 - Dec 2023
         Details:
-          - Develop and implement a company-wide technology strategy that aligned with business goals and objectives, resulting in an increase in efficiency and a 15% reduction in IT costs
-          - Oversee the selection, deployment, and management of all technology systems, including hardware, software, and networks
-          - Lead a team of engineers in the development and deployment of a scalable, secure, and reliable system for collecting and analyzing data from a large network of smart energy devices
-          - Led the development and execution of the company's cybersecurity plan, ensuring the protection of sensitive data and systems
-          - Manage a team of technical staff, including hiring, training, and performance evaluations 
-          - Collaborate with cross-functional teams, including product support, marketing, and sales, to identify and prioritize technology initiatives
-          - Participate in budget planning and resource allocation for technology projects and initiatives
-          - Research industry trends and emerging technologies, continuously looking for opportunities to introduce new tools and techniques that could benefit the company
-          - Work with external vendors and partners to negotiate contracts and manage relationships.
-        Badges: ['Planning', 'Mentoring', 'Product Development', 'Cybersecurity', 'SOC2', 'IoT']
+          - Spearheaded the technology vision and strategy leading to a 40% year over year growth.
+          - Drove the development and launch of 4 groundbreaking products/features, significantly enhancing the company's competitive edge and customer satisfaction.
+          - Architected a robust, scalable IoT product and infrastructure that supported a 60% growth in customer base and 130% increase in data volume, ensuring high performance and reliability.
+          - Built and led a high-performing team of engineers, fostering a culture of innovation, collaboration, and continuous improvement that increased team productivity by 23%.
+          - Successfully managed negotiations with multiple investors for a positive transaction.
+          - Negotiated strategic partnerships with key vendors, enhancing service capabilities and reducing costs by 35%.
+        Badges: ['Strategic Leadership', 'Mentoring', 'Product Development', 'Business Development', 'M&A', 'Cybersecurity', 'IoT']
   - Employer: Uplight
     Place: Boulder, CO
     Positions:
       - Title: VP, Engineering
         Date: 2018 - 2022
         Details:
-          - Led security and market viability assessments of M&A targets.
-          - Helped lead post-acquisition integration of six companies, growing Engineering team from 25 to 300.
-          - Restructured with sustained focus on building culture of employee empowerment across global teams, tracking ongoing success metrics in anonymous staff surveys.
-          - Created cohesive security practice across six legacy companies.
-          - Completed and unified all products under a clean SOC2 report.
-          - Recruited, built and managed an engineering security team that has demonstrably improved the security of Uplight products.
-          - Built Scrum leadership team and refined SDLC and quarterly planning.
-          - Managed engineering budget, reliably leading projects to on-time/under-budget completion.
-          - Modernized hiring process, using candidate feedback—successful and unsuccessful—to realize better company and applicant experience.
-        Badges: ['Agile', 'SOC2', 'Cybersecurity', 'AWS', 'GCP', 'Kubernetes', 'Planning', 'Mentoring']
+          - Strategically led the integration of 6 acquired companies, achieving a 96% retention rate of key talent, expanding the engineering team from 25 to 300+, and fostered a culture of empowerment as evidenced by positive staff survey metrics.
+          - Orchestrated a unified cybersecurity framework across 6 legacy companies, leading a successful completion of SOC2 audits and initiating a company-wide SOC2 compliance effort, significantly mitigating risk and enhancing market trust.
+          - Cultivated a high-performing Scrum leadership team, optimizing the Software Development Life Cycle (SDLC) and enhancing quarterly planning processes, resulting in more efficient project timelines and improved team productivity.
+          - Managed a $15M annual technology budget, strategically optimizing costs while investing in critical areas such as infrastructure, resulting in a 30% reduction while enhancing system capabilities and performance.
+          - Revolutionized the hiring process by incorporating candidate feedback, both positive and negative, leading to improved company reputation and a more candidate-centric recruitment experience.
+        Badges: ['M&A', 'SOC2', 'Cybersecurity', 'AWS', 'GCP', 'Planning', 'Mentoring']
   - Employer: LogRhythm  
     Place: Boulder, CO
     Positions:   
       - Title: Senior Manager, Software Development
         Date: 2017 - 2018
         Details:
-          - Drove effort to deploy flagship on-prem SIEM offering to the cloud. 
-          - Hired engineering team to build SaaS product infrastructure.
-          - Spec’d SaaS offering with Google Cloud Platform.
-          - Managed successful SOC 2 type II certification of AWS SaaS.
-          - Organized Agile training for R&D (200 engineers) to make deliverables predictable, improve velocity, and generate metrics on release health.
-          - Managed software and vendor budget for R&D department.
-          - Oversaw rewrite of CI infrastructure to use Kubernetes/Jenkins, moving process to agnostic environment (on-prem or cloud) and mitigating human process errors.
+          - Spearheaded the strategic migration of the flagship on-prem SIEM offering to a cloud-based solution, overseeing the hiring and direction of a specialized engineering team to develop a robust SaaS infrastructure on Google Cloud Platform, culminating in a successful SOC 2 Type II certification.
+          - Championed Agile transformation for a 200-member R&D team, enhancing deliverable predictability, accelerating project velocity, and establishing key performance metrics to monitor release health and efficiency.
+          - Strategically managed the software and vendor budget for the R&D department, optimizing resource allocation to maximize innovation and operational efficiency.
+          - Directed a comprehensive overhaul of the CI infrastructure, transitioning to a Kubernetes/Jenkins-based system, facilitating a flexible on-prem and cloud environment while significantly reducing human error and improving deployment processes.
         Badges: ['Agile', 'SOC2', 'AWS', 'GCP', 'Planning', 'Planning', 'Cybersecurity']
   - Employer: OpenWager
     Place: Boulder, CO
@@ -65,12 +68,10 @@ Experience:
       - Title: Director, Engineering
         Date: 2015 - 2017
         Details:
-          - Managed three teams (22 engineers) in multiple countries. Recruited and hired all members of Boulder engineering team.
-          - Served as Scrum Master for backend and mobile client teams.
-          - Analyzed infrastructure costs and made changes (right-sized servers, implemented auto-scaling) to save $35k/month.
-          - Led full config. management infrastructure rewrite from Salt to Ansible, decreasing client backend deploy time from three months to an hour.
-          - Designed and executed complete migration of aging on-prem infrastructure to private cloud (AWS) with zero downtime.
-          - Seamlessly migrated game acquisition with 100k daily active users to OpenWager systems.
+          - Directed a multinational engineering team of 22 professionals, personally overseeing the recruitment and formation of the Boulder engineering team, fostering a culture of innovation and collaboration across borders.
+          - Strategically analyzed and optimized infrastructure costs, implementing right-sized servers and auto-scaling solutions, achieving significant savings of $35k/month without compromising performance.
+          - Led a comprehensive overhaul of the configuration management infrastructure, transitioning from Salt to Ansible, which dramatically reduced client backend deployment time from three months to one hour, enhancing client satisfaction and operational agility.
+          - Orchestrated the seamless migration of aging on-prem infrastructure to a private AWS cloud environment, ensuring zero downtime and maintaining business continuity during the critical transition phase.
         Badges: ['AWS', 'Ansible', 'High Availability', 'Hiring', 'Team Building']
   - Employer: Simple Energy
     Place: Boulder, CO
@@ -78,26 +79,25 @@ Experience:
       - Title: Director, Engineering
         Date: 2013 - 2015
         Details:
-          - Drove adoption of Scrum across Engineering and Product teams. Served as Scrum Master for infrastructure team.
-          - Managed team of six operations engineers. Conducted interviews and assisted in hiring, helping firm grow from five to 30 engineers.
-          - Improved client setup time from nine months to less than four hours by automating most customer launch steps, ensuring fast and consistent results for customer onboards.
-          - Scaled infrastructure from 20 servers to more than 700, addressing critical need for dev environments that could spin up/tear down easily.
-          - Redesigned network and upgraded to custom hardware, increasing performance 20x.
-          - Redefined deployment process using infrastructure-as-code and custom scripts to ensure quick and simple deployments.
-          - Built and managed monitoring and notification systems using Zabbix + PagerDuty.
-        Badges: ['Agile', 'Puppet', 'Xenserver', 'Hiring ', 'Infrastructure Design']
+          - Strategically expanded and led a team of 6 operations engineers, playing a pivotal role in scaling the firm's engineering workforce from 5 to 30, through effective recruitment and talent development strategies.
+          - Dramatically improved client setup time from 9 months to under 4 hours by automating customer launch steps, significantly enhancing client satisfaction and operational efficiency.
+          - Engineered a scalable infrastructure solution, expanding from 20 to over 700 servers, to meet the growing demand for development environments, ensuring rapid, flexible provisioning. 
+          - Redesigned the network architecture and upgraded to custom hardware, achieving a 20-fold increase in performance, and significantly enhancing system reliability and user experience.
+          - Revolutionized the deployment process by implementing infrastructure-as-code and custom scripting, streamlining operations, and reducing deployment times, ensuring agility and reliability.
+          - Developed and managed a comprehensive monitoring and notification system using PagerDuty, enhancing system reliability and proactive issue resolution.
+        Badges: ['Agile', 'Puppet', 'DevOps', 'Hiring ', 'Infrastructure Design']
   - Employer: Applied Trust
     Place: Boulder, CO
     Positions:
       - Title: Senior Engineer
         Date: 2007 - 2013
         Details:
-          - Served as client manager on high-touch consulting accounts across healthcare, government, tech, finance, and other industries—assessing client needs, setting and adhering to budgets, and leading all projects.
-          - Reviewed client infrastructure, advised effective best practices, and created short-term and long-term companywide infrastructure plans.
-          - Designed, configured, monitored, troubleshot, and maintained complex server environments.
-          - Performed security, performance, and availability assessments against HIPAA, PCI, SCADA, and other regulations/frameworks.
-          - Evaluated and implemented new technologies, including large-scale log management and petabyte storage solutions.
-        Badges: ['Consulting', 'Security', 'Infrastructure', 'Hiring']
+          - Pioneered the evaluation and implementation of cutting-edge technologies, including large-scale log management and petabyte storage solutions, driving operational efficiency and future-proofing infrastructure.
+          - Led high-touch consulting projects across diverse sectors including healthcare, government, and finance, driving client satisfaction through tailored solutions, budget adherence, and strategic project leadership.
+          - Conducted comprehensive reviews of client infrastructures, delivering best practice advisories, and developing strategic short-term and long-term plans to enhance system reliability and performance.
+          - Expertly designed, configured, and maintained complex environments, ensuring high availability and performance.
+          - Performed rigorous security and performance assessments in line with HIPAA, PCI, SCADA, and other regulatory standards, significantly enhancing system compliance and data integrity.
+        Badges: ['Consulting', 'Cybersecurity', 'Compliance', 'Infrastructure', 'Hiring']
 
 Education:
   - Course: Bachelor of Science - Business
@@ -108,20 +108,23 @@ Education:
 Skills:
   - Family: Management
     Items:
-      - Planning
-      - Agile
+      - Leadership
+      - Business Development      
       - Product Development
-      - Project Management
       - Hiring
       - Mentoring
+      - Planning
+      - Agile
   - Family: Security
     Items:
       - Network Security
       - Frameworks (NIST)
       - Awareness programs
+      - Training
   - Family: Infrastructure
     Items:
       - Cloud Infrastructure (AWS, GCP, Azure)
+      - IoT
       - Docker
       - Kubernetes
   - Family: CI/CD
@@ -141,4 +144,7 @@ Interests:
   - Flying
   - Triathlon
   - Travel
+  - 3d Printing
+  - Home Automation
+  - DIY Projects
 
