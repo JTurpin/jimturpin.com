@@ -1,72 +1,105 @@
-name: PR Feedback with Custom GPT
+name: PR Code Standards Review
 
 on:
   pull_request:
-    types:
-      - opened
-      - synchronize
+    branches: [ main ]
 
 jobs:
-  gpt-feedback:
+  ai-code-review:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
 
-      - name: Get list of changed files
-        run: |
-          if git cat-file -e ${{ github.event.before }} 2>/dev/null; then
-            git diff --name-only --diff-filter=AMRC ${{ github.event.before }} ${{ github.sha }} > changed_files.txt
-          else
-            git diff --name-only --diff-filter=AMRC $(git rev-list --max-parents=0 HEAD) HEAD > changed_files.txt
-          fi
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.9'
 
-      - name: Send files to Custom GPT
-        env:
-          GPT_ENDPOINT: https://chatgpt.com/g/g-9m1JIKwVX-slash
-          CHATGPT_ACCESS_TOKEN: ${{ secrets.CHATGPT_ACCESS_TOKEN }}
-          GITHUB_PR: ${{ github.event.pull_request.number }}
-        run: |
-          feedback=""
-          while IFS= read -r file; do
-            if [ -f "$file" ]; then
-              content=$(cat "$file")
-              response=$(curl -s -X POST "$GPT_ENDPOINT" \
-                -H "Content-Type: application/json" \
-                -H "Authorization: Bearer $CHATGPT_ACCESS_TOKEN" \
-                -d "$(jq -n --arg file_name "$file" --arg file_content "$content" --arg pr_number "$GITHUB_PR" '{file_name: $file_name, file_content: $file_content, pr_number: $pr_number}')")
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install openai GitPython
 
-              echo "Response from GPT endpoint for file $file:"
-              echo "$response"
+    - name: Generate PR Diff
+      id: pr-diff
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: |
+        git diff ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} > pr_diff.txt
+        echo "Generated PR diff"
 
-              # Validate response format
-              if echo "$response" | jq empty 2>/dev/null; then
-                feedback="$feedback\n\nFile: $file\n$response"
-              else
-                echo "Invalid response for file $file: $response"
-                feedback="$feedback\n\nFile: $file\n[Error: Invalid response from GPT endpoint]"
-              fi
-            fi
-          done < changed_files.txt
-          echo "$feedback" > feedback.txt
+    - name: Review Code with OpenAI
+      env:
+        OPENAI_API_KEY: ${{ secrets.CHATGPT }}
+      run: |
+        python << EOF
+        import os
+        import openai
 
-      - name: Post feedback as comments
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: |
-          if [ -s feedback.txt ]; then
-            while IFS= read -r line; do
-              if [ -n "$line" ]; then
-                sanitized_line=$(echo "$line" | jq -R .)
-                curl -s --fail -X POST "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments" \
-                  -H "Authorization: Bearer $GH_TOKEN" \
-                  -H "Content-Type: application/json" \
-                  -d "{\"body\": $sanitized_line}" || echo "Failed to post comment: $sanitized_line"
-              fi
-            done < feedback.txt
-          else
-            echo "No feedback to post."
-          fi
+        # Read coding standards (you should replace this with your actual standards file)
+        with open('CODING_STANDARDS.md', 'r') as standards_file:
+            coding_standards = standards_file.read()
+
+        # Read PR diff
+        with open('pr_diff.txt', 'r') as diff_file:
+            pr_diff = diff_file.read()
+
+        # Set up OpenAI client
+        openai.api_key = os.getenv('CHATGPT')
+
+        # Prepare the prompt
+        prompt = f"""
+        Review the following code changes against our coding standards:
+
+        Coding Standards:
+        {coding_standards}
+
+        Code Diff:
+        {pr_diff}
+
+        Provide a detailed review focusing on:
+        1. Compliance with coding standards
+        2. Potential improvements
+        3. Code quality issues
+        4. Suggestions for refactoring
+
+        Format your response as a structured code review with:
+        - Compliance Score (0-100)
+        - Detailed Findings
+        - Specific Recommendations
+        """
+
+        # Call OpenAI API
+        response = openai.ChatCompletion.create(
+            model="gpt-4-turbo",
+            messages=[
+                {"role": "system", "content": "You are a senior software engineer reviewing code changes."},
+                {"role": "user", "content": prompt}
+            ],
+            max_tokens=1000
+        )
+
+        # Save the review
+        review_text = response.choices[0].message.content
+        with open('code_review.md', 'w') as review_file:
+            review_file.write(review_text)
+
+        print("Code review generated successfully.")
+        EOF
+
+    - name: Post Review as PR Comment
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        PR_NUMBER: ${{ github.event.pull_request.number }}
+      run: |
+        gh pr comment $PR_NUMBER -F code_review.md
+
+    - name: Upload Review Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: code-review
+        path: code_review.md
