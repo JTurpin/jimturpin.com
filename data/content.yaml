@@ -13,11 +13,23 @@ BasicInfo:
 Profile: Forward-thinking engineering leader with prolific experience growing teams, building first-to-market products, and cementing operational efficiency as a bedrock of successful software organizations. Robust technical skillset balanced by deep knowledge of Scrum and Agile processes and empathetic, people-first decision-making.
 
 Experience:
+  - Employer: Arcadia
+    Place: Washington, DC (Remote)
+    Positions:
+      - Title: VP, Engineering
+        Date: 2025 - Present
+        Details:
+          - Lead team of over 200 engineers, across multiple locations, fostering collaboration, continuous improvement, and technical innovation.
+          - Developed and deployed AI-powered tools to enhance productivity and efficiency increasing productivity by 26%.
+          - Streamlined engineering processes, driving productivity and scalability while ensuring high availability, security, and reliability for a growing customer base.
+          - Led the technical due diligence for the acquisition of multiple companies and managed their integration into Arcadia.
+          - Designed and implemented a cutting edge AI powered data extraction platform to automate the extraction of data from utility bills, increasing productivity by 80%.
+        Badges: ['Strategic Leadership', 'Mentoring', 'Business Development', 'M&A', 'Cybersecurity', 'AI Implementation']
   - Employer: Sitetracker
     Place: Montclair, NJ (Remote)
     Positions:
       - Title: VP, Engineering
-        Date: May 2024 - Feb 2025
+        Date: 2024 - 2025
         Details:
           - Led the development and scaling of a large SaaS platform with over 300 customers, driving a 40% year-over-year revenue growth while maintaining a flat budget through innovative product development and operational excellence.
           - Oversaw a high-performing, geographically dispersed engineering team of 90 professionals across the United States and Bangalore, India, fostering collaboration, continuous improvement, and technical innovation.
@@ -30,7 +42,7 @@ Experience:
     Place: Seattle, WA (Remote)
     Positions:
       - Title: Chief Technology Officer
-        Date: Jan 2022 - Dec 2023
+        Date: 2022 - 2024
         Details:
           - Spearheaded the technology vision and strategy leading to a 40% year over year growth.
           - Drove the development and launch of 4 groundbreaking products/features, significantly enhancing the company's competitive edge and customer satisfaction.
