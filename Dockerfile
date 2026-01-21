@@ -1,9 +1,11 @@
-FROM klakegg/hugo:ext-alpine as build
+FROM alpine:latest as build
 LABEL Maintainer="jim@jimturpin.com"
+
+RUN apk add --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community hugo
 
 COPY ./ /src
 WORKDIR /src
-RUN hugo
+RUN hugo --minify --cleanDestinationDir
 
 #Copy static files to Nginx
 FROM nginx:alpine
