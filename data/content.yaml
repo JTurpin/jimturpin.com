@@ -19,11 +19,11 @@ Experience:
       - Title: VP, Engineering
         Date: 2025 - Present
         Details:
-          - Lead team of over 200 engineers, across multiple locations, fostering collaboration, continuous improvement, and technical innovation.
-          - Developed and deployed AI-powered tools to enhance productivity and efficiency increasing productivity by 26%.
-          - Streamlined engineering processes, driving productivity and scalability while ensuring high availability, security, and reliability for a growing customer base.
-          - Led the technical due diligence for the acquisition of multiple companies and managed their integration into Arcadia.
-          - Designed and implemented a cutting edge AI powered data extraction platform to automate the extraction of data from utility bills, increasing productivity by 80%.
+          - Championed an AI-first engineering culture, embedding AI-powered tools and practices across the software development lifecycle, resulting in a 26% increase in engineering productivity and establishing AI as a core competency for the organization.
+          - Rebuilt the document extraction pipeline leveraging AI to process millions of utility bills per month, achieving a 5% improvement in data accuracy and reducing issue resolution time by 80%.
+          - Led technical due diligence and post-acquisition integration of a services-based company, scaling the engineering organization from ~200 to ~500 engineers and driving the company's growth from ~800 to ~2,200 employees and from ~$40M to ~$290M ARR.
+          - Identified and executed on cross-company synergies post-acquisition, aligning engineering teams around shared platforms and processes to accelerate the transition from a services-based model to a scalable software product organization.
+          - Architected scalable engineering processes and data infrastructure capable of supporting 7x revenue growth, ensuring high availability, security, and reliability while maintaining operational efficiency across a rapidly expanding customer base and product portfolio.
         Badges: ['Strategic Leadership', 'Mentoring', 'Business Development', 'M&A', 'Cybersecurity', 'AI Implementation']
   - Employer: Sitetracker
     Place: Montclair, NJ (Remote)
